@@ -1,10 +1,10 @@
-import { setCost } from "../context";
-import { setAuth, setUsername } from "../context/auth";
-import { toastHelper } from "./toastHelper";
+import { setCost } from '../context'
+import { setAuth, setUsername } from '../context/auth'
+import { toastHelper } from './toastHelper'
 
 export const removeUser = () => {
-  localStorage.removeItem('auth');
-  setAuth(false);
+  localStorage.removeItem('auth')
+  setAuth(false)
   setUsername('')
   setCost([])
 }
@@ -13,12 +13,12 @@ export const getAuthDataLS = () => {
   try {
     const lSData = JSON.parse(localStorage.getItem('auth') as string)
     if (!lSData) {
-      removeUser();
-      return;
+      removeUser()
+      return
     }
-    return lSData;
+    return lSData
   } catch (error) {
-    removeUser();
+    removeUser()
     toastHelper('error', 'Problem with token ')
   }
 }
